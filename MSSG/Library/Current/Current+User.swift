@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ReactiveSwift
 
 // MARK: - Current User
 
@@ -14,9 +15,10 @@ extension Current {
     static let user = Current.User()
 
     class User {
+        fileprivate let service: AuthService
 
-        init() {
-
+        init(service: AuthService) {
+            self.service = service
         }
 
     }
@@ -27,14 +29,24 @@ extension Current {
 
 protocol AuthorizableUser {
     var isAuthenticated: Bool { get }
+    func signIn(recoveryPhrase phrase: String) -> SignalProducer<String, NSError>
+    func signUp() -> SignalProducer<String, NSError>
 }
 
 extension Current.User: AuthorizableUser {
 
     var isAuthenticated: Bool {
-        return false
+        return service.isAuthenticated
     }
 
+    func signIn(recoveryPhrase phrase: String) -> SignalProducer<String, NSError> {
+        return service.signIn(recoveryPhrase: phrase)
+    }
+
+    func signUp() -> SignalProducer<String, NSError> {
+        return service.signUp()
+    }
+    
 }
 
 // MARK: - Notification Center Extension

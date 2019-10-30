@@ -1,5 +1,8 @@
 PODS:
   - Protobuf (3.10.0)
+  - ReactiveCocoa (10.1.0):
+    - ReactiveSwift (~> 6.1)
+  - ReactiveSwift (6.1.0)
   - Textile (2.0.10):
     - Protobuf (~> 3.7)
     - TextileCore (= 0.7.1)
@@ -7,19 +10,25 @@ PODS:
     - Protobuf (~> 3.7)
 
 DEPENDENCIES:
+  - ReactiveCocoa
+  - ReactiveSwift
   - Textile
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Protobuf
+    - ReactiveCocoa
+    - ReactiveSwift
     - Textile
     - TextileCore
 
 SPEC CHECKSUMS:
   Protobuf: a4dc852ad69c027ca2166ed287b856697814375b
+  ReactiveCocoa: 2f1d942d79072eded6d8c3bc7c2a641d40855a56
+  ReactiveSwift: b78c7259f8ca46368238c895ae33a6a3bf9f811c
   Textile: 5dc335e1e41bd308d26ac14025ba6cccbef11732
   TextileCore: 4376d528c22aa0abfdd29ffa3967f4b62d7569c1
 
-PODFILE CHECKSUM: a3cc1a0a07b00cbb30844085756f7ed6e5631efa
+PODFILE CHECKSUM: 83edbd65f35f164b0286c11a58f7caafb1941a95
 
 COCOAPODS: 1.7.4

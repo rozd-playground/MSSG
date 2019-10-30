@@ -11,12 +11,14 @@ import UIKit
 // MARK: Dependency Injection
 
 protocol AuthAssembler {
-
+    func resolve() -> AuthService
 }
 
 extension AuthAssembler {
 
-
+    func resolve() -> AuthService {
+        return TextileAuthService()
+    }
 
 }
 

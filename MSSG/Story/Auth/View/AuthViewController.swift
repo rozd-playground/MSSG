@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import ReactiveCocoa
+import ReactiveSwift
 
 class AuthViewController: UIViewController {
 
@@ -24,6 +26,23 @@ class AuthViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // reactive
+
+        mnemonicTextField.reactive.text <~ viewModel.recoveryPhrase
+
+        viewModel.recoveryPhrase <~ mnemonicTextField.reactive.continuousTextValues
+
+        viewModel.signUp.values
+            .take(duringLifetimeOf: self)
+            .observe(on: UIScheduler())
+            .observeValues { [weak self] phrase in
+                self?.showAlert(withTitle: "Your Recovery Phrase Is", message: phrase)
+            }
+
+        signUpButton.reactive.pressed = CocoaAction(viewModel.signUp)
+
+        signInButton.reactive.pressed = CocoaAction(viewModel.signIn)
     }
     
     /*

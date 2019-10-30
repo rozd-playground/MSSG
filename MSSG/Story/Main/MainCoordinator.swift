@@ -40,9 +40,13 @@ class MainCoordinator: BaseCoordinator<()> {
             return
         }
 
-        showDashboard { [weak self] in
-            self?.start {}
+        showContacts { [weak self] in
+            self?.start()
         }
+
+//        showDashboard { [weak self] in
+//            self?.start {}
+//        }
     }
 
 }
@@ -58,6 +62,11 @@ extension MainCoordinator {
 
     func showDashboard(completion: @escaping () -> ()) {
         let coordinator = DashboardCoordinator(window: window, viewModel: viewModel.createDashboardViewModel())
+        coordinate(to: coordinator, with: completion)
+    }
+
+    func showContacts(completion: @escaping () -> ()) {
+        let coordinator = ContactsCoordinator(window: window, viewModel: viewModel.createContactsViewModel())
         coordinate(to: coordinator, with: completion)
     }
 

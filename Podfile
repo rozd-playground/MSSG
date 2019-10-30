@@ -7,4 +7,7 @@ target 'MSSG' do
 
   pod 'Textile'
 
+  pod 'ReactiveSwift'
+  pod 'ReactiveCocoa'
+
 end

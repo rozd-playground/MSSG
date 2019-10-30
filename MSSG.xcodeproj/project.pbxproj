@@ -27,6 +27,19 @@
 		5028BF9C2368841D0002481A /* DesignBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5028BF9B2368841D0002481A /* DesignBorder.swift */; };
 		5028BF9D2368841D0002481A /* DesignShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5028BF9A2368841D0002481A /* DesignShadow.swift */; };
 		5028BFA0236884B50002481A /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5028BF9F236884B50002481A /* UIColor+Extensions.swift */; };
+		5028BFA32368CD700002481A /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5028BFA22368CD700002481A /* AuthService.swift */; };
+		5028BFA62368D00B0002481A /* TextileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5028BFA52368D00B0002481A /* TextileService.swift */; };
+		5028BFA92368D0480002481A /* MSSG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5028BFA82368D0480002481A /* MSSG.swift */; };
+		5028BFAD2368D2B10002481A /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5028BFAC2368D2B10002481A /* Auth.swift */; };
+		5028BFB02368D7B90002481A /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5028BFAF2368D7AC0002481A /* Assembler.swift */; };
+		5028BFB22368DC8F0002481A /* UIKit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5028BFB12368DC8F0002481A /* UIKit+Extensions.swift */; };
+		5028BFB623696D5E0002481A /* Contacts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5028BFB523696D5E0002481A /* Contacts.storyboard */; };
+		5028BFB823696D6B0002481A /* ContactsWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5028BFB723696D6B0002481A /* ContactsWireframe.swift */; };
+		5028BFBB23696D880002481A /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5028BFBA23696D880002481A /* ContactsViewController.swift */; };
+		5028BFBE23696DBF0002481A /* ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5028BFBD23696DBF0002481A /* ContactsViewModel.swift */; };
+		5028BFC123696DEC0002481A /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5028BFC023696DEC0002481A /* Contacts.swift */; };
+		5028BFC423696E350002481A /* ContactsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5028BFC323696E350002481A /* ContactsService.swift */; };
+		5028BFC623696E640002481A /* ContactsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5028BFC523696E640002481A /* ContactsCoordinator.swift */; };
 		50E8F79223686A680076026A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E8F79123686A680076026A /* AppDelegate.swift */; };
 		50E8F79623686A680076026A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E8F79523686A680076026A /* ViewController.swift */; };
 		50E8F79923686A680076026A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50E8F79723686A680076026A /* Main.storyboard */; };
@@ -57,6 +70,19 @@
 		5028BF9A2368841D0002481A /* DesignShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignShadow.swift; sourceTree = "<group>"; };
 		5028BF9B2368841D0002481A /* DesignBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignBorder.swift; sourceTree = "<group>"; };
 		5028BF9F236884B50002481A /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		5028BFA22368CD700002481A /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		5028BFA52368D00B0002481A /* TextileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextileService.swift; sourceTree = "<group>"; };
+		5028BFA82368D0480002481A /* MSSG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSSG.swift; sourceTree = "<group>"; };
+		5028BFAC2368D2B10002481A /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		5028BFAF2368D7AC0002481A /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
+		5028BFB12368DC8F0002481A /* UIKit+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Extensions.swift"; sourceTree = "<group>"; };
+		5028BFB523696D5E0002481A /* Contacts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Contacts.storyboard; sourceTree = "<group>"; };
+		5028BFB723696D6B0002481A /* ContactsWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsWireframe.swift; sourceTree = "<group>"; };
+		5028BFBA23696D880002481A /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
+		5028BFBD23696DBF0002481A /* ContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModel.swift; sourceTree = "<group>"; };
+		5028BFC023696DEC0002481A /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
+		5028BFC323696E350002481A /* ContactsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsService.swift; sourceTree = "<group>"; };
+		5028BFC523696E640002481A /* ContactsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsCoordinator.swift; sourceTree = "<group>"; };
 		50E8F78E23686A680076026A /* MSSG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSSG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50E8F79123686A680076026A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50E8F79523686A680076026A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -215,8 +241,110 @@
 			isa = PBXGroup;
 			children = (
 				5028BF9F236884B50002481A /* UIColor+Extensions.swift */,
+				5028BFB12368DC8F0002481A /* UIKit+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5028BFA12368CD5E0002481A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				5028BFA22368CD700002481A /* AuthService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		5028BFA42368CFF50002481A /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		5028BFA72368D0380002481A /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				5028BFA82368D0480002481A /* MSSG.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		5028BFAA2368D0560002481A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				5028BFA52368D00B0002481A /* TextileService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		5028BFAB2368D2990002481A /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				5028BFAC2368D2B10002481A /* Auth.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		5028BFAE2368D7AC0002481A /* Dependency Injection */ = {
+			isa = PBXGroup;
+			children = (
+				5028BFAF2368D7AC0002481A /* Assembler.swift */,
+			);
+			path = "Dependency Injection";
+			sourceTree = "<group>";
+		};
+		5028BFB323696D490002481A /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				5028BFC223696E280002481A /* Service */,
+				5028BFBF23696DE00002481A /* Domain */,
+				5028BFBC23696DB30002481A /* ViewModel */,
+				5028BFB923696D780002481A /* View */,
+				5028BFB423696D500002481A /* Storyboard */,
+				5028BFB723696D6B0002481A /* ContactsWireframe.swift */,
+				5028BFC523696E640002481A /* ContactsCoordinator.swift */,
+			);
+			path = Contacts;
+			sourceTree = "<group>";
+		};
+		5028BFB423696D500002481A /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				5028BFB523696D5E0002481A /* Contacts.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		5028BFB923696D780002481A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5028BFBA23696D880002481A /* ContactsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5028BFBC23696DB30002481A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5028BFBD23696DBF0002481A /* ContactsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5028BFBF23696DE00002481A /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				5028BFC023696DEC0002481A /* Contacts.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		5028BFC223696E280002481A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				5028BFC323696E350002481A /* ContactsService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		50E8F78523686A680076026A = {
@@ -253,6 +381,8 @@
 		50E8F7A523686B070076026A /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				5028BFAE2368D7AC0002481A /* Dependency Injection */,
+				5028BFA42368CFF50002481A /* Networking */,
 				5028BF9E236884A40002481A /* Extensions */,
 				5028BF96236883BF0002481A /* Appearance */,
 				5028BF9123687FEB0002481A /* Current */,
@@ -264,9 +394,10 @@
 		50E8F7A623686B0C0076026A /* Story */ = {
 			isa = PBXGroup;
 			children = (
-				5028BF7023687B8C0002481A /* Dashboard */,
 				50E8F7A823686B1A0076026A /* Main */,
 				50E8F7A723686B110076026A /* Auth */,
+				5028BF7023687B8C0002481A /* Dashboard */,
+				5028BFB323696D490002481A /* Contacts */,
 			);
 			path = Story;
 			sourceTree = "<group>";
@@ -274,6 +405,8 @@
 		50E8F7A723686B110076026A /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				5028BFA12368CD5E0002481A /* Service */,
+				5028BFAB2368D2990002481A /* Domain */,
 				5028BF8E23687F310002481A /* ViewModel */,
 				5028BF8B23687F080002481A /* View */,
 				50E8F7A923686B200076026A /* Storyboard */,
@@ -286,6 +419,8 @@
 		50E8F7A823686B1A0076026A /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				5028BFAA2368D0560002481A /* Service */,
+				5028BFA72368D0380002481A /* Domain */,
 				5028BF7E23687C170002481A /* ViewModel */,
 				5028BF7D23687C130002481A /* View */,
 				5028BF7C23687C0C0002481A /* Storyboard */,
@@ -366,6 +501,7 @@
 				50E8F79E23686A6B0076026A /* LaunchScreen.storyboard in Resources */,
 				5028BF7523687BBA0002481A /* Dashboard.storyboard in Resources */,
 				50E8F7AB23686B2F0076026A /* Auth.storyboard in Resources */,
+				5028BFB623696D5E0002481A /* Contacts.storyboard in Resources */,
 				50E8F79B23686A6B0076026A /* Assets.xcassets in Resources */,
 				50E8F79923686A680076026A /* Main.storyboard in Resources */,
 			);
@@ -420,27 +556,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5028BFC423696E350002481A /* ContactsService.swift in Sources */,
 				5028BF8323687E120002481A /* Coordinator.swift in Sources */,
+				5028BFBE23696DBF0002481A /* ContactsViewModel.swift in Sources */,
 				5028BF8523687E2F0002481A /* DashboardCoordinator.swift in Sources */,
 				50E8F79623686A680076026A /* ViewController.swift in Sources */,
+				5028BFBB23696D880002481A /* ContactsViewController.swift in Sources */,
 				5028BF9C2368841D0002481A /* DesignBorder.swift in Sources */,
 				5028BFA0236884B50002481A /* UIColor+Extensions.swift in Sources */,
+				5028BFAD2368D2B10002481A /* Auth.swift in Sources */,
+				5028BFA32368CD700002481A /* AuthService.swift in Sources */,
 				5028BF8223687DFC0002481A /* MainWireframe.swift in Sources */,
 				5028BF9D2368841D0002481A /* DesignShadow.swift in Sources */,
 				5028BF95236880090002481A /* Current+User.swift in Sources */,
+				5028BFA62368D00B0002481A /* TextileService.swift in Sources */,
 				5028BF99236883DF0002481A /* DesignControls.swift in Sources */,
 				5028BF8123687DF90002481A /* MainCoordinator.swift in Sources */,
 				5028BF9023687F4F0002481A /* AuthViewModel.swift in Sources */,
+				5028BFB22368DC8F0002481A /* UIKit+Extensions.swift in Sources */,
 				5028BF7B23687BF70002481A /* DashboardViewModel.swift in Sources */,
+				5028BFC123696DEC0002481A /* Contacts.swift in Sources */,
 				5028BF8623687E310002481A /* DashboardWireframe.swift in Sources */,
 				5028BF8A23687EF70002481A /* AuthWireframe.swift in Sources */,
 				50E8F79223686A680076026A /* AppDelegate.swift in Sources */,
+				5028BFB02368D7B90002481A /* Assembler.swift in Sources */,
 				5028BF7923687BE60002481A /* DashboardViewController.swift in Sources */,
+				5028BFC623696E640002481A /* ContactsCoordinator.swift in Sources */,
 				5028BF9323687FF60002481A /* Current.swift in Sources */,
 				5028BF8D23687F2C0002481A /* AuthViewController.swift in Sources */,
 				5028BF8423687E120002481A /* Segues.swift in Sources */,
 				5028BF8823687EEA0002481A /* AuthCoordinator.swift in Sources */,
 				5028BF8023687C230002481A /* MainViewModel.swift in Sources */,
+				5028BFA92368D0480002481A /* MSSG.swift in Sources */,
+				5028BFB823696D6B0002481A /* ContactsWireframe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

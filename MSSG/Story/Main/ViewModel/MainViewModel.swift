@@ -10,6 +10,15 @@ import Foundation
 
 class MainViewModel {
 
+    // MARK: Model
+
+    fileprivate let mssg: MSSG
+
+    // MARK: Lifecycle
+
+    init(mssg: MSSG) {
+        self.mssg = mssg
+    }
 }
 
 // MARK: - Nested view models
@@ -17,11 +26,15 @@ class MainViewModel {
 extension MainViewModel {
 
     func createAuthViewModel() -> AuthViewModel {
-        return AuthViewModel()
+        return AuthViewModel(auth: mssg.auth)
     }
     
     func createDashboardViewModel() -> DashboardViewModel {
         return DashboardViewModel()
+    }
+
+    func createContactsViewModel() -> ContactsViewModel {
+        return ContactsViewModel(contacts: mssg.contacts)
     }
 
 }
