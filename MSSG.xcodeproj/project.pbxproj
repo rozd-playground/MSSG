@@ -40,6 +40,9 @@
 		5028BFC123696DEC0002481A /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5028BFC023696DEC0002481A /* Contacts.swift */; };
 		5028BFC423696E350002481A /* ContactsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5028BFC323696E350002481A /* ContactsService.swift */; };
 		5028BFC623696E640002481A /* ContactsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5028BFC523696E640002481A /* ContactsCoordinator.swift */; };
+		5028BFC9236972060002481A /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5028BFC8236972060002481A /* Contact.swift */; };
+		5028BFCB236984390002481A /* ContactSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5028BFCA236984380002481A /* ContactSearchViewController.swift */; };
+		5028BFCD2369846D0002481A /* ContactSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5028BFCC2369846D0002481A /* ContactSearchViewModel.swift */; };
 		50E8F79223686A680076026A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E8F79123686A680076026A /* AppDelegate.swift */; };
 		50E8F79623686A680076026A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E8F79523686A680076026A /* ViewController.swift */; };
 		50E8F79923686A680076026A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50E8F79723686A680076026A /* Main.storyboard */; };
@@ -83,6 +86,9 @@
 		5028BFC023696DEC0002481A /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
 		5028BFC323696E350002481A /* ContactsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsService.swift; sourceTree = "<group>"; };
 		5028BFC523696E640002481A /* ContactsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsCoordinator.swift; sourceTree = "<group>"; };
+		5028BFC8236972060002481A /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		5028BFCA236984380002481A /* ContactSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactSearchViewController.swift; sourceTree = "<group>"; };
+		5028BFCC2369846D0002481A /* ContactSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactSearchViewModel.swift; sourceTree = "<group>"; };
 		50E8F78E23686A680076026A /* MSSG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSSG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50E8F79123686A680076026A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50E8F79523686A680076026A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -319,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				5028BFBA23696D880002481A /* ContactsViewController.swift */,
+				5028BFCA236984380002481A /* ContactSearchViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -327,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				5028BFBD23696DBF0002481A /* ContactsViewModel.swift */,
+				5028BFCC2369846D0002481A /* ContactSearchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -345,6 +353,14 @@
 				5028BFC323696E350002481A /* ContactsService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		5028BFC7236971DE0002481A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5028BFC8236972060002481A /* Contact.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		50E8F78523686A680076026A = {
@@ -368,6 +384,7 @@
 		50E8F79023686A680076026A /* MSSG */ = {
 			isa = PBXGroup;
 			children = (
+				5028BFC7236971DE0002481A /* Model */,
 				50E8F7A623686B0C0076026A /* Story */,
 				50E8F7A523686B070076026A /* Library */,
 				50E8F79123686A680076026A /* AppDelegate.swift */,
@@ -558,6 +575,7 @@
 			files = (
 				5028BFC423696E350002481A /* ContactsService.swift in Sources */,
 				5028BF8323687E120002481A /* Coordinator.swift in Sources */,
+				5028BFC9236972060002481A /* Contact.swift in Sources */,
 				5028BFBE23696DBF0002481A /* ContactsViewModel.swift in Sources */,
 				5028BF8523687E2F0002481A /* DashboardCoordinator.swift in Sources */,
 				50E8F79623686A680076026A /* ViewController.swift in Sources */,
@@ -565,6 +583,7 @@
 				5028BF9C2368841D0002481A /* DesignBorder.swift in Sources */,
 				5028BFA0236884B50002481A /* UIColor+Extensions.swift in Sources */,
 				5028BFAD2368D2B10002481A /* Auth.swift in Sources */,
+				5028BFCB236984390002481A /* ContactSearchViewController.swift in Sources */,
 				5028BFA32368CD700002481A /* AuthService.swift in Sources */,
 				5028BF8223687DFC0002481A /* MainWireframe.swift in Sources */,
 				5028BF9D2368841D0002481A /* DesignShadow.swift in Sources */,
@@ -579,6 +598,7 @@
 				5028BF8623687E310002481A /* DashboardWireframe.swift in Sources */,
 				5028BF8A23687EF70002481A /* AuthWireframe.swift in Sources */,
 				50E8F79223686A680076026A /* AppDelegate.swift in Sources */,
+				5028BFCD2369846D0002481A /* ContactSearchViewModel.swift in Sources */,
 				5028BFB02368D7B90002481A /* Assembler.swift in Sources */,
 				5028BF7923687BE60002481A /* DashboardViewController.swift in Sources */,
 				5028BFC623696E640002481A /* ContactsCoordinator.swift in Sources */,

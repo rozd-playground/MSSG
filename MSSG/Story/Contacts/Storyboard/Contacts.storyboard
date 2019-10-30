@@ -7,21 +7,120 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Contacts View Controller-->
+        <!--Contacts-->
         <scene sceneID="m4W-Hg-wfk">
             <objects>
                 <viewController id="vY4-mA-3fe" customClass="ContactsViewController" customModule="MSSG" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9eG-8b-bAx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QLO-st-JUd">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="QLO-st-JUd" firstAttribute="trailing" secondItem="McA-yC-dsH" secondAttribute="trailing" id="EXQ-cS-jXv"/>
+                            <constraint firstItem="QLO-st-JUd" firstAttribute="top" secondItem="McA-yC-dsH" secondAttribute="top" id="PF0-as-kyw"/>
+                            <constraint firstItem="QLO-st-JUd" firstAttribute="bottom" secondItem="McA-yC-dsH" secondAttribute="bottom" id="eGX-HY-7cq"/>
+                            <constraint firstItem="QLO-st-JUd" firstAttribute="leading" secondItem="McA-yC-dsH" secondAttribute="leading" id="fcI-gV-g9B"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="McA-yC-dsH"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Txm-CZ-atY"/>
+                    <navigationItem key="navigationItem" title="Contacts" id="Txm-CZ-atY">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="aVu-VB-mps">
+                                <connections>
+                                    <action selector="handleSearchBarButtonItemTap:" destination="vY4-mA-3fe" id="s9W-H3-rR5"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="refresh" id="t4Y-kz-RRq"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="refreshBarButtonItem" destination="t4Y-kz-RRq" id="y4y-S2-wHC"/>
+                        <outlet property="searchBarButtonItem" destination="aVu-VB-mps" id="niu-wr-fRi"/>
+                        <outlet property="tableView" destination="QLO-st-JUd" id="LXM-zT-Zyx"/>
+                        <segue destination="Y2R-wb-AzT" kind="show" identifier="showContactSearch" id="rDP-CW-oub"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fzQ-d2-czv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1034.7826086956522" y="159.375"/>
+            <point key="canvasLocation" x="931.88405797101461" y="158.70535714285714"/>
+        </scene>
+        <!--Contact Search View Controller-->
+        <scene sceneID="QB0-ag-8Hg">
+            <objects>
+                <viewController id="Y2R-wb-AzT" customClass="ContactSearchViewController" customModule="MSSG" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4bJ-LN-WaA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3GI-8z-28s">
+                                <rect key="frame" x="0.0" y="88" width="414" height="754"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yak-oc-qZT">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kkd-kX-glg">
+                                        <rect key="frame" x="0.0" y="56" width="414" height="638"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </tableView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TkV-ML-TJA">
+                                        <rect key="frame" x="87" y="694" width="240" height="20"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="ecO-4h-EsH"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogG-Ig-84G" customClass="DesignButton" customModule="MSSG" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="714" width="374" height="40"/>
+                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Gd0-Be-cjb"/>
+                                        </constraints>
+                                        <state key="normal" title="Search">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ogG-Ig-84G" secondAttribute="trailing" constant="20" id="6a5-UR-rzy"/>
+                                    <constraint firstAttribute="trailing" secondItem="kkd-kX-glg" secondAttribute="trailing" id="B8c-pp-q4f"/>
+                                    <constraint firstItem="yak-oc-qZT" firstAttribute="leading" secondItem="3GI-8z-28s" secondAttribute="leading" id="V3J-2e-vdz"/>
+                                    <constraint firstItem="ogG-Ig-84G" firstAttribute="leading" secondItem="3GI-8z-28s" secondAttribute="leading" constant="20" id="WvG-to-Qja"/>
+                                    <constraint firstAttribute="trailing" secondItem="yak-oc-qZT" secondAttribute="trailing" id="Wwr-26-Ayr"/>
+                                    <constraint firstItem="kkd-kX-glg" firstAttribute="leading" secondItem="3GI-8z-28s" secondAttribute="leading" id="wK5-ma-94i"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="3GI-8z-28s" firstAttribute="top" secondItem="b6a-ca-cxQ" secondAttribute="top" id="BUt-kq-dyf"/>
+                            <constraint firstItem="3GI-8z-28s" firstAttribute="leading" secondItem="b6a-ca-cxQ" secondAttribute="leading" id="a9E-Yb-lNI"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="3GI-8z-28s" secondAttribute="bottom" constant="20" id="wj7-jY-TmF"/>
+                            <constraint firstItem="b6a-ca-cxQ" firstAttribute="trailing" secondItem="3GI-8z-28s" secondAttribute="trailing" id="ylv-qK-Vxz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="b6a-ca-cxQ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="CO2-so-ch6"/>
+                    <connections>
+                        <outlet property="searchBar" destination="yak-oc-qZT" id="Yj4-X1-ZJV"/>
+                        <outlet property="searchButton" destination="ogG-Ig-84G" id="ggL-EG-Xi5"/>
+                        <outlet property="tableView" destination="kkd-kX-glg" id="T30-at-oRE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nqg-F0-Etq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1792.753623188406" y="158.70535714285714"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6U3-zM-BLO">

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ReactiveSwift
 
 class Contacts {
 
@@ -19,4 +20,19 @@ class Contacts {
     init(service: ContactsService) {
         self.service = service
     }
+
+    // MARK: Search
+
+    func list() -> SignalProducer<[ContactModel], NSError> {
+        return service.list()
+    }
+    
+    func search(byName name: String) -> SignalProducer<[ContactModel], NSError> {
+        return service.search(byName: name)
+    }
+
+    func add(contact: ContactModel) -> SignalProducer<(), NSError> {
+        return service.add(contact: contact)
+    }
+
 }

@@ -93,6 +93,10 @@ extension UITableView {
         return dequeueReusableCell(withIdentifier: type.reusableIdentifier, for: indexPath) as! T
     }
 
+    func registerDefaultReusableCell() {
+        register(UITableViewCell.self, forCellReuseIdentifier: "defaultReusableCell")
+    }
+
     func dequeueDefaultReusableCell() -> UITableViewCell {
         return dequeueReusableCell(withIdentifier: "defaultReusableCell") ?? UITableViewCell(style: .default, reuseIdentifier: "defaultReusableCell")
     }

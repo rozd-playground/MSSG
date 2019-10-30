@@ -10,7 +10,17 @@ import UIKit
 import ReactiveSwift
 import ReactiveCocoa
 
-class ContactsViewController: UIViewController {
+class ContactsViewController: UIViewController, SegueHandler {
+
+    enum SegueIdentifier: String {
+        case showContactSearch
+    }
+
+    // MARK: Outlets
+
+    @IBOutlet weak var refreshBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var searchBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var tableView: UITableView!
 
     // MARK: View model
 
@@ -21,18 +31,92 @@ class ContactsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // tableView
+
+        tableView.registerDefaultReusableCell()
+        tableView.dataSource = self
+        tableView.delegate = self
+
+        // reactive
+
+        refreshBarButtonItem.reactive.pressed = CocoaAction(viewModel.refresh)
+
+        viewModel.myContacts.signal
+            .observe(on: UIScheduler())
+            .take(duringLifetimeOf: self)
+            .observeValues { [weak self] _ in
+                self?.tableView.reloadData()
+            }
+
+        viewModel.refresh.errors
+            .observe(on: UIScheduler())
+            .take(duringLifetimeOf: self)
+            .observeValues { [weak self] error in
+                self?.showAlert(withError: error)
+            }
     }
-    
 
-    /*
-    // MARK: - Navigation
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        refreshContacts()
+    }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // MARK: Methods
+
+    fileprivate func refreshContacts() {
+        viewModel.refresh.apply(())
+            .observe(on: UIScheduler())
+            .take(duringLifetimeOf: self)
+            .start()
+    }
+
+    // MARK: Navigation
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        switch segueIdentifierForSegue(segue: segue) {
+        case .showContactSearch:
+            if let vc = segue.destination as? ContactSearchViewController {
+                vc.viewModel = viewModel.createContactSearchViewModel()
+            }
+        }
     }
-    */
 
+    // MARK: Actions
+
+    @IBAction func handleSearchBarButtonItemTap(_ sender: Any) {
+        performSegue(withIdentifier: .showContactSearch, sender: nil)
+    }
+}
+
+// MARK: - UITableViewDataSource
+
+extension ContactsViewController: UITableViewDataSource {
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.numberOfSections
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.numberOfRows(in: section)
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueDefaultReusableCell()
+
+        let contact = viewModel.contact(at: indexPath)
+        cell.textLabel?.text = contact.name
+        cell.detailTextLabel?.text = contact.address
+
+        return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension ContactsViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let contact = viewModel.contact(at: indexPath)
+
+    }
 }
