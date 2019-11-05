@@ -40,11 +40,15 @@ extension Current.User: AuthorizableUser {
     }
 
     func signIn(recoveryPhrase phrase: String) -> SignalProducer<String, NSError> {
-        return service.signIn(recoveryPhrase: phrase)
+        return service.signIn(recoveryPhrase: phrase).on(value: { _ in
+            NotificationCenter.default.post(Notification(name: .userSignIn))
+        })
     }
 
     func signUp() -> SignalProducer<String, NSError> {
-        return service.signUp()
+        return service.signUp().on(value: { _ in
+            NotificationCenter.default.post(Notification(name: .userSignIn))
+        })
     }
     
 }

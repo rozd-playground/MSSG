@@ -9,6 +9,7 @@
 import UIKit
 import ReactiveSwift
 import ReactiveCocoa
+import Textile
 
 class ContactsViewController: UIViewController, SegueHandler {
 
@@ -44,7 +45,7 @@ class ContactsViewController: UIViewController, SegueHandler {
         viewModel.myContacts.signal
             .observe(on: UIScheduler())
             .take(duringLifetimeOf: self)
-            .observeValues { [weak self] _ in
+            .observeValues { [weak self] contacts in
                 self?.tableView.reloadData()
             }
 
@@ -64,6 +65,9 @@ class ContactsViewController: UIViewController, SegueHandler {
     // MARK: Methods
 
     fileprivate func refreshContacts() {
+        print("address: \(Textile.instance().account.address())")
+        print("seed: \(Textile.instance().account.seed())")
+
         viewModel.refresh.apply(())
             .observe(on: UIScheduler())
             .take(duringLifetimeOf: self)
@@ -104,7 +108,7 @@ extension ContactsViewController: UITableViewDataSource {
         let cell = tableView.dequeueDefaultReusableCell()
 
         let contact = viewModel.contact(at: indexPath)
-        cell.textLabel?.text = contact.name
+        cell.textLabel?.text = "\(indexPath.row): \(contact.name)"
         cell.detailTextLabel?.text = contact.address
 
         return cell

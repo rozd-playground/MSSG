@@ -9,6 +9,7 @@
 import Foundation
 import Textile
 import ReactiveSwift
+import TextileCore
 
 class TextileService {
 
@@ -49,18 +50,59 @@ class TextileNotificationCenter: NSObject {
 
 extension TextileNotificationCenter: TextileDelegate {
 
+    // MARK: Node
+
+    func nodeStarted() {
+        print("TextileDelegate.nodeStarted")
+    }
+
+    func nodeStopped() {
+        print("TextileDelegate.nodeStopped")
+    }
+
+    func nodeOnline() {
+        print("TextileDelegate.nodeOnline")
+    }
+
+    private func nodeFailedToStopWithError(_ error: Error) {
+        print("TextileDelegate.nodeFailedToStopWithError(\(String(describing: error)))")
+    }
+
+    private func nodeFailedToStartWithError(_ error: Error) {
+        print("TextileDelegate.nodeFailedToStartWithError(\(error)))")
+    }
+
+    func willStopNodeInBackground(afterDelay seconds: TimeInterval) {
+        print("TextileDelegate.willStopNodeInBackground(afterDelay \(seconds))")
+    }
+
+    func canceledPendingNodeStop() {
+        print("TextileDelegate.willStopNodeInBackground")
+    }
+
+    // MARK: Account
+
+    func accountPeerAdded(_ peerId: String) {
+        print("TextileDelegate.accountPeerAdded(\(peerId))")
+    }
+
+    func accountPeerRemoved(_ peerId: String) {
+        print("TextileDelegate.accountPeerRemoved(\(peerId))")
+    }
+
+    // MARK: Notifications
+
+    func notificationReceived(_ notification: TextileCore.Notification) {
+        print("TextileDelegate.notificationReceived(\(notification))")
+    }
+
+    // MARK: Queries
+
     func queryDone(_ queryId: String) {
         guard let observer = contactQueries[queryId] else {
             return
         }
         observer.sendCompleted()
-    }
-
-    func contactQueryResult(_ queryId: String, contact: Contact) {
-        guard let observer = contactQueries[queryId] else {
-            return
-        }
-        observer.send(value: contact)
     }
 
     private func queryError(_ queryId: String, error: Error) {
@@ -69,4 +111,46 @@ extension TextileNotificationCenter: TextileDelegate {
         }
         observer.send(error: NSError(domain: "MSSG.Textile", code: Int(error.code), userInfo: [NSLocalizedDescriptionKey : error.message ?? "Unknown Query Error"]))
     }
+
+    // MARK: Contacts
+
+    func contactQueryResult(_ queryId: String, contact: Contact) {
+        guard let observer = contactQueries[queryId] else {
+            return
+        }
+        observer.send(value: contact)
+    }
+
+    // MARK: Thread
+
+    func threadAdded(_ threadId: String) {
+        print("TextileDelegate.threadAdded(\(threadId))")
+    }
+
+    func threadRemoved(_ threadId: String) {
+        print("TextileDelegate.threadRemoved(\(threadId))")
+    }
+
+    func threadUpdateReceived(_ threadId: String, data feedItemData: FeedItemData) {
+        print("TextileDelegate.threadUpdateReceived(\(threadId), \(feedItemData))")
+    }
+
+    func clientThreadQueryResult(_ queryId: String, thread: TextileCore.Thread) {
+        print("TextileDelegate.clientThreadQueryResult(\(queryId), \(thread))")
+    }
+
+    // MARK: Sync
+
+    func syncFailed(_ status: CafeSyncGroupStatus) {
+        print("TextileDelegate.syncFailed(\(status))")
+    }
+
+    func syncUpdate(_ status: CafeSyncGroupStatus) {
+        print("TextileDelegate.syncUpdate(\(status)")
+    }
+
+    func syncComplete(_ status: CafeSyncGroupStatus) {
+        print("TextileDelegate.syncComplete(\(status))")
+    }
+
 }

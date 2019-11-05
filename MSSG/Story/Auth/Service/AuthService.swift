@@ -33,17 +33,48 @@ class TextileAuthService: TextileService, AuthService {
             return false
         }
 
+        var error: NSError?
+        Textile.instance().account.sync(QueryOptions(), error: &error)
+        if let error = error {
+            print(error.localizedDescription)
+        }
+
         return true
     }
 
     func signIn(recoveryPhrase phrase: String) -> SignalProducer<String, NSError> {
-        return SignalProducer { sink, disposable in
+        return SignalProducer { [weak self] sink, disposable in
+            guard let self = self else {
+                return
+            }
+            guard !Textile.isInitialized(self.textileRepoPath) else {
+                sink.send(error: NSError(domain: "MSSG.Textile", code: 0, userInfo: [NSLocalizedDescriptionKey : "Textile repo already exists."]))
+                return
+            }
 
+            var error: NSError?
+            let account = Textile.walletAccount(at: phrase, index: 0, password: nil, error: &error)
+            if let error = error {
+                sink.send(error: error)
+                return
+            }
+
+            do {
+                try Textile.initialize(self.textileRepoPath, seed: account.seed, debug: false, logToDisk: false)
+            } catch let error as NSError {
+                sink.send(error: error)
+            }
+
+            sink.send(value: account.address)
+            sink.sendCompleted()
         }
     }
 
     func signUp() -> SignalProducer<String, NSError> {
-        return SignalProducer { sink, disposable in
+        return SignalProducer { [weak self] sink, disposable in
+            guard let self = self else {
+                return
+            }
             guard !Textile.isInitialized(self.textileRepoPath) else {
                 sink.send(error: NSError(domain: "MSSG.Textile", code: 0, userInfo: [NSLocalizedDescriptionKey : "Textile repo already exists."]))
                 return

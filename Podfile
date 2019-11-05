@@ -5,7 +5,7 @@ target 'MSSG' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  pod 'Textile'
+  pod 'Textile', :path => '../ios-textile'
 
   pod 'ReactiveSwift'
   pod 'ReactiveCocoa'
