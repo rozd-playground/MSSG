@@ -10,7 +10,7 @@
         <!--Contacts-->
         <scene sceneID="m4W-Hg-wfk">
             <objects>
-                <viewController id="vY4-mA-3fe" customClass="ContactsViewController" customModule="MSSG" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Contacts" id="vY4-mA-3fe" customClass="ContactsViewController" customModule="MSSG" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9eG-8b-bAx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

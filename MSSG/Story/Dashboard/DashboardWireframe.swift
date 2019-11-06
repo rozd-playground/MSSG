@@ -24,16 +24,16 @@ extension DashboardAssembler {
 
 extension UIStoryboard {
 
-    class var Dashboard: UIStoryboard {
+    class var dashboard: UIStoryboard {
         return UIStoryboard(name: "Dashboard", bundle: nil)
     }
 
     func instantiateInitialViewController(with viewModel: DashboardViewModel) -> UIViewController? {
-        guard let vc = UIStoryboard.Dashboard.instantiateInitialViewController() as? DashboardViewController else {
-            fatalError("Initial view controller for Dashboard storyboard should be of DashboardViewController type.")
+        let initial = UIStoryboard.dashboard.instantiateInitialViewController()
+        if let nc = initial as? UINavigationController, let dashboard = nc.topViewController as? DashboardViewController {
+            dashboard.viewModel = viewModel
         }
-        vc.viewModel = viewModel
-        return vc
+        return initial
     }
     
 }

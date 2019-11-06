@@ -7,11 +7,30 @@
 //
 
 import Foundation
+import ReactiveSwift
 
 class DashboardViewModel {
 
+    // MARK: Output
+
+    let signOut: Action<(), (), NSError>
+
+    // MARK: Lifecycle
+
     init() {
-        
+        signOut = Action {
+            return Current.user.signOut()
+        }
     }
     
+}
+
+// MARK: Nested view models
+
+extension DashboardViewModel {
+
+    func createContactsViewModel() -> ContactsViewModel {
+        return ContactsViewModel()
+    }
+
 }

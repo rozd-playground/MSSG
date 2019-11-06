@@ -14,14 +14,61 @@
                     <view key="view" contentMode="scaleToFill" id="NY6-ZN-TML">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9Mj-qi-jaP">
+                                <rect key="frame" x="30" y="428" width="354" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pXK-N6-M9V" customClass="DesignButton" customModule="MSSG" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="40"/>
+                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="y8D-Vs-alV"/>
+                                        </constraints>
+                                        <state key="normal" title="Contacts">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="handleContactsButtonTap:" destination="2kY-7e-Yuh" eventType="touchUpInside" id="QT0-78-ZG9"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="DCk-Jh-Kpe" firstAttribute="trailing" secondItem="9Mj-qi-jaP" secondAttribute="trailing" constant="30" id="Laq-Yz-HJN"/>
+                            <constraint firstItem="9Mj-qi-jaP" firstAttribute="leading" secondItem="DCk-Jh-Kpe" secondAttribute="leading" constant="30" id="PCk-aW-MUm"/>
+                            <constraint firstItem="9Mj-qi-jaP" firstAttribute="centerY" secondItem="NY6-ZN-TML" secondAttribute="centerY" id="RjN-R8-i6d"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="DCk-Jh-Kpe"/>
                     </view>
-                    <navigationItem key="navigationItem" id="BW7-vt-7Sr"/>
+                    <navigationItem key="navigationItem" id="BW7-vt-7Sr">
+                        <barButtonItem key="rightBarButtonItem" title="Sign out" id="MEk-Ya-Z5l"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="contactsButton" destination="pXK-N6-M9V" id="SVr-7k-kYf"/>
+                        <outlet property="signOutButton" destination="MEk-Ya-Z5l" id="NF0-Gj-cwR"/>
+                        <segue destination="Osp-g4-Fq9" kind="show" identifier="showContacts" id="l1G-1z-KKs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VK5-Zo-okb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="881.15942028985512" y="70.982142857142847"/>
+        </scene>
+        <!--Contacts-->
+        <scene sceneID="7Rs-ld-2Jg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Contacts" referencedIdentifier="Contacts" id="Osp-g4-Fq9" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ObJ-tX-a3E"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="miq-GR-Qkf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1621" y="71"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UUd-ub-CY4">

@@ -26,7 +26,12 @@ class DashboardCoordinator: BaseCoordinator<()> {
     // MARK: Entry point
 
     override func start(with completion: @escaping (()) -> ()) {
-        let rootViewController = UIStoryboard.Dashboard.instantiateInitialViewController(with: viewModel)
+        var token: NSObjectProtocol!
+        token = NotificationCenter.default.addObserver(forName: .userSignOut, object: nil, queue: OperationQueue.main) { notification in
+            NotificationCenter.default.removeObserver(token!)
+            completion(())
+        }
+        let rootViewController = UIStoryboard.dashboard.instantiateInitialViewController(with: viewModel)
         window.rootViewController = rootViewController
     }
     

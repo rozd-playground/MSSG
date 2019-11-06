@@ -19,9 +19,10 @@ protocol ContactsService {
 class TextileContactsService: TextileService, ContactsService {
 
     func list() -> SignalProducer<[ContactModel], NSError> {
-        return SignalProducer { [unowned self] sink, disposable in
+        let textile = getTextileInstance()
+        return SignalProducer { sink, lifetime in
             var error: NSError?
-            let contacts = self.textile.contacts.list(&error)
+            let contacts = textile.contacts.list(&error)
             if let error = error {
                 sink.send(error: error)
             } else {
@@ -33,7 +34,8 @@ class TextileContactsService: TextileService, ContactsService {
     }
 
     func search(byName name: String) -> SignalProducer<[ContactModel], NSError> {
-        return SignalProducer { [unowned self] sink, lifetime in
+        let textile = getTextileInstance()
+        return SignalProducer { sink, lifetime in
             let query = ContactQuery()
             query.name = name
 
@@ -41,7 +43,7 @@ class TextileContactsService: TextileService, ContactsService {
             options.limit = 100
 
             var error: NSError?
-            let handle = self.textile.contacts.search(query, options: options, error: &error)
+            let handle = textile.contacts.search(query, options: options, error: &error)
             if let error = error {
                 sink.send(error: error)
             }
@@ -66,14 +68,15 @@ class TextileContactsService: TextileService, ContactsService {
     }
 
     func add(contact: ContactModel) -> SignalProducer<(), NSError> {
-        return SignalProducer { [unowned self] sink, disposable in
+        let textile = getTextileInstance()
+        return SignalProducer { sink, lifetime in
             var error: NSError?
-            let contact = self.textile.contacts.get(contact.address, error: &error)
+            let contact = textile.contacts.get(contact.address, error: &error)
             if let error = error {
                 sink.send(error: error)
                 return
             }
-            self.textile.contacts.add(contact, error: &error)
+            textile.contacts.add(contact, error: &error)
             if let error = error {
                 sink.send(error: error)
             } else {

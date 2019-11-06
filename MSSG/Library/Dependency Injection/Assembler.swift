@@ -55,3 +55,9 @@ extension MainViewModel {
         self.init(mssg: mssg)
     }
 }
+
+extension ContactsViewModel {
+    convenience init() {
+        self.init(contacts: mssg.contacts)
+    }
+}

@@ -31,6 +31,7 @@ protocol AuthorizableUser {
     var isAuthenticated: Bool { get }
     func signIn(recoveryPhrase phrase: String) -> SignalProducer<String, NSError>
     func signUp() -> SignalProducer<String, NSError>
+    func signOut() -> SignalProducer<(), NSError>
 }
 
 extension Current.User: AuthorizableUser {
@@ -48,6 +49,12 @@ extension Current.User: AuthorizableUser {
     func signUp() -> SignalProducer<String, NSError> {
         return service.signUp().on(value: { _ in
             NotificationCenter.default.post(Notification(name: .userSignIn))
+        })
+    }
+
+    func signOut() -> SignalProducer<(), NSError> {
+        return service.signOut().on(value: { _ in
+            NotificationCenter.default.post(Notification(name: .userSignOut))
         })
     }
     

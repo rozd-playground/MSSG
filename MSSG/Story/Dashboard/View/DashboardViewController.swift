@@ -7,8 +7,20 @@
 //
 
 import UIKit
+import ReactiveSwift
+import ReactiveCocoa
 
-class DashboardViewController: UIViewController {
+class DashboardViewController: UIViewController, SegueHandler {
+
+    enum SegueIdentifier: String {
+        case showContacts
+    }
+
+    // MARK: Outlets
+
+    @IBOutlet fileprivate weak var signOutButton: UIBarButtonItem!
+    
+    @IBOutlet fileprivate weak var contactsButton: DesignButton!
 
     // MARK: View model
 
@@ -19,18 +31,25 @@ class DashboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // reactive
+
+        signOutButton.reactive.pressed = CocoaAction(viewModel.signOut)
     }
-    
 
-    /*
-    // MARK: - Navigation
+    // MARK: Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        switch (segueIdentifierForSegue(segue: segue)) {
+        case .showContacts:
+            if let destination = segue.destination as? ContactsViewController {
+                destination.viewModel = viewModel.createContactsViewModel()
+            }
+        }
     }
-    */
 
+    // MARK: Actions
+
+    @IBAction func handleContactsButtonTap(_ sender: Any) {
+        performSegue(withIdentifier: .showContacts, sender: nil)
+    }
 }

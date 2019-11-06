@@ -13,18 +13,21 @@ import TextileCore
 
 class TextileService {
 
-    let textile: Textile
-
     let notifications = TextileNotificationCenter.center
 
-    lazy var textileRepoPath: String = {
+    init() {
+
+    }
+
+    func getTextileInstance() -> Textile {
+        return Textile.instance()
+    }
+
+    func getTextileRepoPath() -> String {
         let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0]
         return (documentPath as NSString).appendingPathComponent("textile-repo")
-    }()
-
-    init() {
-        self.textile = Textile.instance()
     }
+    
 }
 
 class TextileNotificationCenter: NSObject {

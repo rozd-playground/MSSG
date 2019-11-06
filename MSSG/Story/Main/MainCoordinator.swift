@@ -28,10 +28,6 @@ class MainCoordinator: BaseCoordinator<()> {
 
     // MARK: Start point
 
-    func start() {
-        start {}
-    }
-
     override func start(with completion: @escaping (()) -> ()) {
         guard Current.user.isAuthenticated else {
             showAuth { [weak self] in
@@ -40,13 +36,9 @@ class MainCoordinator: BaseCoordinator<()> {
             return
         }
 
-        showContacts { [weak self] in
-            self?.start()
+        showDashboard { [weak self] in
+            self?.start {}
         }
-
-//        showDashboard { [weak self] in
-//            self?.start {}
-//        }
     }
 
 }
