@@ -7,10 +7,16 @@
 //
 
 import UIKit
+import ReactiveSwift
+import ReactiveCocoa
 
 class CreateFeedbackViewController: UIViewController {
 
     // MARK: Outlets
+
+    @IBOutlet weak var ratingLabel: UILabel!
+    
+    @IBOutlet weak var ratingSlider: UISlider!
 
     @IBOutlet fileprivate weak var descriptionTextField: UITextField!
 
@@ -25,7 +31,13 @@ class CreateFeedbackViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // reactive
+
+        viewModel.rating <~ ratingSlider.reactive.values
+
+        viewModel.detail <~ descriptionTextField.reactive.continuousTextValues
+
+        submitButton.reactive.pressed = CocoaAction(viewModel.rate)
     }
     
 

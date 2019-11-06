@@ -17,13 +17,19 @@ class CreateFeedbackViewModel {
 
     fileprivate let contact: ContactModel
 
+    fileprivate let feedback: Property<Feedback?>
+
     // MARK: Outputs
 
-    var feedback: MutableProperty<Feedback?>
+
 
     // MARK: Input
 
-    let create: Action<Feedback, (), NSError>
+    let rating: MutableProperty<Float?>
+
+    let detail: MutableProperty<String?>
+
+    let rate: Action<(), (), NSError>
 
     // MARK: Lifecycle
 
@@ -31,11 +37,23 @@ class CreateFeedbackViewModel {
         self.feedbacks = feedbacks
         self.contact = contact
 
-        feedback = MutableProperty(nil)
+        rating = MutableProperty(0.0)
+        detail = MutableProperty(nil)
 
-        create = Action { feedback in
+        feedback = Property.combineLatest(rating, detail).map { Feedback(rating: $0.0, detail: $0.1) }
+
+        rate = Action(unwrapping: feedback) { feedback in
             return feedbacks.create(feedback: feedback)
         }
     }
 
+}
+
+extension Feedback {
+    init?(rating: Float?, detail: String?) {
+        guard let rating = rating else {
+            return nil
+        }
+        self.init(rating: rating, description: detail)
+    }
 }

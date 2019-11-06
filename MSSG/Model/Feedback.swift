@@ -9,5 +9,12 @@
 import Foundation
 
 struct Feedback {
-    
+    let rating: Float
+    let description: String?
+}
+
+extension Feedback {
+    var ratingForDisplay: String {
+        return "\(rating)★"
+    }
 }

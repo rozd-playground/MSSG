@@ -26,8 +26,9 @@ class TextileFeedbacksService: TextileService, FeedbacksService {
     }
 
     func create(feedback: Feedback) -> SignalProducer<(), NSError> {
+        let textile = getTextileInstance()
         return SignalProducer { sink, lifetime in
-
+            print("creating feedback \(feedback)")
         }
     }
 
