@@ -61,5 +61,9 @@ extension ContactsViewModel {
     func createContactSearchViewModel() -> ContactSearchViewModel {
         return ContactSearchViewModel(contacts: contacts)
     }
+
+    func createFeedbacksViewModel(for contact: ContactModel) -> FeedbacksViewModel {
+        return FeedbacksViewModel(contact: contact)
+    }
     
 }

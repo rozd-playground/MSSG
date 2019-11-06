@@ -16,11 +16,14 @@ class MSSG {
 
     let contacts: Contacts
 
+    let feedbacks: Feedbacks
+
     // MARK: Lifecycle
 
-    init(auth: Auth, contacts: Contacts) {
+    init(auth: Auth, contacts: Contacts, feedbacks: Feedbacks) {
         self.auth = auth
         self.contacts = contacts
+        self.feedbacks = feedbacks
     }
 
 }

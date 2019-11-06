@@ -44,11 +44,22 @@
                         <outlet property="searchBarButtonItem" destination="aVu-VB-mps" id="niu-wr-fRi"/>
                         <outlet property="tableView" destination="QLO-st-JUd" id="LXM-zT-Zyx"/>
                         <segue destination="Y2R-wb-AzT" kind="show" identifier="showContactSearch" id="rDP-CW-oub"/>
+                        <segue destination="kRk-YR-08Y" kind="show" identifier="showFeedbacks" id="fpn-RT-77W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fzQ-d2-czv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="931.88405797101461" y="158.70535714285714"/>
+        </scene>
+        <!--Feedbacks-->
+        <scene sceneID="uPL-Rx-7si">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Feedbacks" id="kRk-YR-08Y" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="G33-rL-syc"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gcN-dB-oNb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1472" y="-95"/>
         </scene>
         <!--Contact Search View Controller-->
         <scene sceneID="QB0-ag-8Hg">
@@ -120,7 +131,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nqg-F0-Etq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1792.753623188406" y="158.70535714285714"/>
+            <point key="canvasLocation" x="1704" y="339"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6U3-zM-BLO">

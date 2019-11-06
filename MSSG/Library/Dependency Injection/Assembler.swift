@@ -26,7 +26,7 @@ let mssg = MSSG()
 
 extension MSSG {
     convenience init() {
-        self.init(auth: Auth(), contacts: Contacts())
+        self.init(auth: Auth(), contacts: Contacts(), feedbacks: Feedbacks())
     }
 }
 
@@ -37,6 +37,12 @@ extension Auth {
 }
 
 extension Contacts {
+    convenience init() {
+        self.init(service: Context.assembler.resolve())
+    }
+}
+
+extension Feedbacks {
     convenience init() {
         self.init(service: Context.assembler.resolve())
     }
@@ -59,5 +65,17 @@ extension MainViewModel {
 extension ContactsViewModel {
     convenience init() {
         self.init(contacts: mssg.contacts)
+    }
+}
+
+extension FeedbacksViewModel {
+    convenience init(contact: ContactModel) {
+        self.init(feedbacks: mssg.feedbacks, contact: contact)
+    }
+}
+
+extension CreateFeedbackViewModel {
+    convenience init(contact: ContactModel) {
+        self.init(feedbacks: mssg.feedbacks, contact: contact)
     }
 }

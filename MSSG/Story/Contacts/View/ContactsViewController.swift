@@ -15,6 +15,7 @@ class ContactsViewController: UIViewController, SegueHandler {
 
     enum SegueIdentifier: String {
         case showContactSearch
+        case showFeedbacks
     }
 
     // MARK: Outlets
@@ -82,6 +83,10 @@ class ContactsViewController: UIViewController, SegueHandler {
             if let vc = segue.destination as? ContactSearchViewController {
                 vc.viewModel = viewModel.createContactSearchViewModel()
             }
+        case .showFeedbacks:
+            if let vc = segue.destination as? FeedbacksViewController, let contact = sender as? ContactModel {
+                vc.viewModel = viewModel.createFeedbacksViewModel(for: contact)
+            }
         }
     }
 
@@ -122,5 +127,8 @@ extension ContactsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let contact = viewModel.contact(at: indexPath)
 
+        performSegue(withIdentifier: .showFeedbacks, sender: contact)
+
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
