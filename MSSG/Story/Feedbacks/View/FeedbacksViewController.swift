@@ -18,6 +18,10 @@ class FeedbacksViewController: UIViewController, SegueHandler {
 
     // MARK: Outlets
 
+    @IBOutlet weak var tableView: UITableView!
+
+    @IBOutlet weak var refreshBarButtonItem: UIBarButtonItem!
+
     @IBOutlet fileprivate weak var addFeedbackButton: UIButton!
 
     // MARK: View model
@@ -29,7 +33,30 @@ class FeedbacksViewController: UIViewController, SegueHandler {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // tableView
+
+        tableView.registerDefaultReusableCell()
+        tableView.dataSource = self
+
         // reactive
+
+        refreshBarButtonItem.reactive.pressed = CocoaAction(viewModel.refresh)
+
+        viewModel.refresh.values
+            .observe(on: UIScheduler())
+            .take(duringLifetimeOf: self)
+            .observeValues { [weak self] _ in
+                self?.tableView.reloadData()
+            }
+
+        viewModel.refresh.errors
+            .observe(on: UIScheduler())
+            .take(duringLifetimeOf: self)
+            .observeValues { [weak self] error in
+                self?.showAlert(withError: error, handler: nil)
+            }
+
+        // refresh
 
         viewModel.refresh.apply().start()
     }
@@ -50,5 +77,31 @@ class FeedbacksViewController: UIViewController, SegueHandler {
     @IBAction func handleCreateFeedbackButtonTap(_ sender: Any?) {
         performSegue(withIdentifier: .showCreateFeedback, sender: nil)
     }
+
+}
+
+// MARK: - UITableViewDataSource
+
+extension FeedbacksViewController: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.numberOfRows(in: section)
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueDefaultReusableCell()
+
+        let feedback = viewModel.feedback(at: indexPath)
+        cell.textLabel?.text = feedback.ratingForDisplay
+        cell.detailTextLabel?.text = feedback.detail
+
+        return cell
+    }
+
+}
+
+// MARK: - UITableViewDelegate
+
+extension FeedbacksViewController: UITableViewDelegate {
 
 }

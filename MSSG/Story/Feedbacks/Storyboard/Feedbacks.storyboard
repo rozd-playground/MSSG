@@ -33,35 +33,48 @@
                                     <action selector="handleCreateFeedbackButtonTap:" destination="eoH-wG-Ewp" eventType="touchUpInside" id="Ogc-yL-Qzx"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NMb-OC-6YY">
+                                <rect key="frame" x="0.0" y="88" width="414" height="714"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="NMb-OC-6YY" firstAttribute="leading" secondItem="dHQ-wd-5Vh" secondAttribute="leading" id="221-A4-hkD"/>
                             <constraint firstItem="dHQ-wd-5Vh" firstAttribute="trailing" secondItem="doL-D6-t9b" secondAttribute="trailing" constant="30" id="AGl-Fc-clW"/>
                             <constraint firstItem="doL-D6-t9b" firstAttribute="bottom" secondItem="dHQ-wd-5Vh" secondAttribute="bottom" id="Rwd-6j-x6P"/>
                             <constraint firstItem="doL-D6-t9b" firstAttribute="leading" secondItem="dHQ-wd-5Vh" secondAttribute="leading" constant="30" id="aoF-Qc-vEq"/>
+                            <constraint firstItem="NMb-OC-6YY" firstAttribute="top" secondItem="dHQ-wd-5Vh" secondAttribute="top" id="dXY-6i-xIp"/>
+                            <constraint firstItem="dHQ-wd-5Vh" firstAttribute="trailing" secondItem="NMb-OC-6YY" secondAttribute="trailing" id="fYd-Zw-reA"/>
+                            <constraint firstItem="doL-D6-t9b" firstAttribute="top" secondItem="NMb-OC-6YY" secondAttribute="bottom" constant="20" id="lFy-8m-aaA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dHQ-wd-5Vh"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Feedbacks" id="Caz-oE-mvI"/>
+                    <navigationItem key="navigationItem" title="Feedbacks" id="Caz-oE-mvI">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="qeC-IW-4wH"/>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="addFeedbackButton" destination="doL-D6-t9b" id="9HG-ti-A0y"/>
+                        <outlet property="refreshBarButtonItem" destination="qeC-IW-4wH" id="tE3-oc-ywK"/>
+                        <outlet property="tableView" destination="NMb-OC-6YY" id="UXA-ak-5dK"/>
                         <segue destination="7ya-ls-rlr" kind="show" identifier="showCreateFeedback" id="qSb-lV-q3j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v2B-Xo-RFK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="255" y="40"/>
+            <point key="canvasLocation" x="253.62318840579712" y="39.508928571428569"/>
         </scene>
         <!--Create Feedback View Controller-->
         <scene sceneID="GLX-qN-NxR">
             <objects>
                 <viewController storyboardIdentifier="CreateFeedback" id="7ya-ls-rlr" customClass="CreateFeedbackViewController" customModule="MSSG" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dGU-x1-eA9">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="qEa-7i-IeT">
-                                <rect key="frame" x="30" y="40" width="354" height="122.5"/>
+                                <rect key="frame" x="30" y="128" width="354" height="122.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2B4-Qg-aoU">
                                         <rect key="frame" x="0.0" y="0.0" width="354" height="26.5"/>
@@ -80,7 +93,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="idq-j8-hda" customClass="DesignButton" customModule="MSSG" customModuleProvider="target">
-                                <rect key="frame" x="30" y="768" width="354" height="40"/>
+                                <rect key="frame" x="30" y="822" width="354" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="n18-on-AW5"/>
@@ -108,7 +121,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="g8P-yU-B6x"/>
                     <connections>
-                        <outlet property="descriptionTextField" destination="Eu9-nG-ygg" id="2E6-9b-PXt"/>
+                        <outlet property="detailTextField" destination="Eu9-nG-ygg" id="ibY-W4-UP3"/>
                         <outlet property="ratingLabel" destination="2B4-Qg-aoU" id="nvI-q9-OBd"/>
                         <outlet property="ratingSlider" destination="M9E-TZ-lih" id="DGB-oE-osG"/>
                         <outlet property="submitButton" destination="idq-j8-hda" id="ANg-xV-2ji"/>

@@ -30,10 +30,28 @@ class FeedbacksViewModel {
         self.contact = contact
 
         refresh = Action {
-            return feedbacks.list()
+            return feedbacks.list(for: contact)
         }
 
         list = Property(initial: [], then: refresh.values)
+    }
+
+}
+
+// MARK: Table support
+
+extension FeedbacksViewModel {
+
+    var numberOfSections: Int {
+        return 1
+    }
+
+    func numberOfRows(in section: Int) -> Int {
+        return list.value.count
+    }
+
+    func feedback(at indexPath: IndexPath) -> Feedback {
+        return list.value[indexPath.row]
     }
 
 }

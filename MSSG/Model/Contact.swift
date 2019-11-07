@@ -17,3 +17,12 @@ struct ContactModel {
         self.name = name
     }
 }
+
+extension ContactModel {
+    var nameForDisplay: String {
+        guard name.count > 0 else {
+            return "No name"
+        }
+        return name
+    }
+}

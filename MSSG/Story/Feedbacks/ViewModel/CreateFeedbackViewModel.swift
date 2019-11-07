@@ -19,10 +19,6 @@ class CreateFeedbackViewModel {
 
     fileprivate let feedback: Property<Feedback?>
 
-    // MARK: Outputs
-
-
-
     // MARK: Input
 
     let rating: MutableProperty<Float?>
@@ -43,7 +39,7 @@ class CreateFeedbackViewModel {
         feedback = Property.combineLatest(rating, detail).map { Feedback(rating: $0.0, detail: $0.1) }
 
         rate = Action(unwrapping: feedback) { feedback in
-            return feedbacks.create(feedback: feedback)
+            return feedbacks.rate(contact: contact, withFeedback: feedback)
         }
     }
 
@@ -54,6 +50,6 @@ extension Feedback {
         guard let rating = rating else {
             return nil
         }
-        self.init(rating: rating, description: detail)
+        self.init(rating: rating, detail: detail)
     }
 }

@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct Feedback {
+struct Feedback: Codable {
     let rating: Float
-    let description: String?
+    let detail: String?
 }
 
 extension Feedback {

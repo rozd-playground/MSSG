@@ -23,12 +23,12 @@ class Feedbacks {
 
     // MARK: Methods
 
-    func list() -> SignalProducer<[Feedback], NSError> {
-        return service.list()
+    func list(for contact: ContactModel) -> SignalProducer<[Feedback], NSError> {
+        return service.list(for: contact)
     }
 
-    func create(feedback: Feedback) -> SignalProducer<(), NSError> {
-        return service.create(feedback: feedback)
+    func rate(contact: ContactModel, withFeedback feedback: Feedback) -> SignalProducer<(), NSError> {
+        return service.rate(contact: contact, withFeedback: feedback)
     }
     
 }

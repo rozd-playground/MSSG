@@ -18,7 +18,7 @@ class CreateFeedbackViewController: UIViewController {
     
     @IBOutlet weak var ratingSlider: UISlider!
 
-    @IBOutlet fileprivate weak var descriptionTextField: UITextField!
+    @IBOutlet fileprivate weak var detailTextField: UITextField!
 
     @IBOutlet fileprivate var submitButton: UIButton!
 
@@ -35,9 +35,26 @@ class CreateFeedbackViewController: UIViewController {
 
         viewModel.rating <~ ratingSlider.reactive.values
 
-        viewModel.detail <~ descriptionTextField.reactive.continuousTextValues
+        viewModel.detail <~ detailTextField.reactive.continuousTextValues
 
         submitButton.reactive.pressed = CocoaAction(viewModel.rate)
+
+        viewModel.rate.errors
+            .observe(on: UIScheduler())
+            .take(duringLifetimeOf: self)
+            .observeValues { [weak self] error in
+                self?.showAlert(withError: error, handler: nil)
+            }
+
+        viewModel.rate.completed
+            .observe(on: UIScheduler())
+            .take(duringLifetimeOf: self)
+            .observeValues { [weak self] in
+                self?.showAlert(withTitle: "Posted!", message: "Thank you for your feedback.", handler: { _ in
+                    // TODO: replace with a delegate
+                    self?.navigationController?.popViewController(animated: true)
+                })
+            }
     }
     
 
