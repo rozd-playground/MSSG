@@ -1,12 +1,12 @@
 PODS:
-  - Protobuf (3.10.0)
+  - Protobuf (3.11.2)
   - ReactiveCocoa (10.1.0):
     - ReactiveSwift (~> 6.1)
   - ReactiveSwift (6.1.0)
   - Textile (0.0.1-dev):
     - Protobuf (~> 3.7)
-    - TextileCore (= 0.7.4)
-  - TextileCore (0.7.4):
+    - TextileCore (= 0.7.6)
+  - TextileCore (0.7.6):
     - Protobuf (~> 3.7)
 
 DEPENDENCIES:
@@ -26,12 +26,12 @@ EXTERNAL SOURCES:
     :path: "../ios-textile"
 
 SPEC CHECKSUMS:
-  Protobuf: a4dc852ad69c027ca2166ed287b856697814375b
+  Protobuf: dd1aaea7140debfe4dd0683fb8ef208e527ae153
   ReactiveCocoa: 2f1d942d79072eded6d8c3bc7c2a641d40855a56
   ReactiveSwift: b78c7259f8ca46368238c895ae33a6a3bf9f811c
-  Textile: 8c9aa774606f84d9322f90845d19b8692e302b87
-  TextileCore: c3b7d9a1dfb36eaa772a942fa13fae80c7a6d0cd
+  Textile: bbf074caccd987413c2f5a21392e75ed71dc6dfb
+  TextileCore: 92cb0377365b6808135c4081808239cd92d9bc97
 
-PODFILE CHECKSUM: f8619c745e10a4988732411c8b5bea4f0ad3c964
+PODFILE CHECKSUM: 3a87d06aa864ea0f42f793356b895e5b8f28021d
 
 COCOAPODS: 1.8.4

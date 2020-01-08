@@ -67,15 +67,71 @@ class TextileContactsService: TextileService, ContactsService {
         }
     }
 
+    fileprivate func doSearch(byAddress address: String) -> SignalProducer<[Contact], NSError> {
+        let textile = getTextileInstance()
+        return SignalProducer { sink, lifetime in
+            let query = ContactQuery()
+            query.address = address
+
+            let options = QueryOptions()
+            options.limit = 100
+
+            var error: NSError?
+            let handle = textile.contacts.search(query, options: options, error: &error)
+            if let error = error {
+                sink.send(error: error)
+            }
+
+            self.notifications.subscribeToContactQueries(handle.id_)
+                .take(during: lifetime)
+                .collect()
+                .observeResult { result in
+                    switch result {
+                    case .success(let contacts):
+                        sink.send(value: contacts)
+                        sink.sendCompleted()
+                    case .failure(let error):
+                        sink.send(error: error)
+                    }
+                }
+
+            lifetime.observeEnded {
+                handle.cancel()
+            }
+        }
+    }
+
     func add(contact: ContactModel) -> SignalProducer<(), NSError> {
+        let textile = getTextileInstance()
+
+        return doSearch(byAddress: contact.address).flatMap(.merge) { (contacts) -> SignalProducer<(), NSError> in
+            guard let contact = contacts.first else {
+                return .empty
+            }
+            return self.doAdd(contact: contact)
+        }
+
+//        return SignalProducer { sink, lifetime in
+//            var error: NSError?
+//            let contact = textile.contacts.get(contact.address, error: &error)
+//            if let error = error {
+//                sink.send(error: error)
+//                return
+//            }
+//            textile.contacts.add(contact, error: &error)
+//            if let error = error {
+//                sink.send(error: error)
+//            } else {
+//                sink.send(value: ())
+//                sink.sendCompleted()
+//            }
+//        }
+    }
+
+    fileprivate func doAdd(contact: Contact) -> SignalProducer<(), NSError> {
         let textile = getTextileInstance()
         return SignalProducer { sink, lifetime in
             var error: NSError?
-            let contact = textile.contacts.get(contact.address, error: &error)
-            if let error = error {
-                sink.send(error: error)
-                return
-            }
             textile.contacts.add(contact, error: &error)
             if let error = error {
                 sink.send(error: error)
@@ -85,7 +141,6 @@ class TextileContactsService: TextileService, ContactsService {
             }
         }
     }
-    
 }
 
 // MARK: - Serialization
