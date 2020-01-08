@@ -47,6 +47,7 @@ class TextileNotificationCenter: NSObject {
         }
         return signal
     }
+
 }
 
 // MARK: - TextileDelegate
@@ -65,6 +66,9 @@ extension TextileNotificationCenter: TextileDelegate {
 
     func nodeOnline() {
         print("TextileDelegate.nodeOnline")
+        Textile.instance().cafes.register("https://us-west-dev.textile.cafe", token: "uggU4NcVGFSPchULpa2zG2NRjw2bFzaiJo3BYAgaFyzCUPRLuAgToE3HXPyo") { _ in
+            print("connected to cafe or got an error on attempt, unable to know that")
+        }
     }
 
     private func nodeFailedToStopWithError(_ error: Error) {
